@@ -7,7 +7,7 @@
     <title>Custom Cards</title>
     <script id="card-template" type="text/x-handlebars-template">
         <article>
-            <h1>{{content}}</h1>
+            <a href="/cards/{{id}}"><h1>{{content}}</h1></a>
             <p>~ From {{sender}} to {{recipient}}</p>
         </article>
     </script>
@@ -33,11 +33,14 @@
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+    
     <script src="scripts/views/cardview.js"></script>
     <script src="scripts/models/Card.js"></script>
     <script src="scripts/views/aboutview.js"></script>
-    <script>
+    <script src="scripts/routes.js"></script>
+    <!-- <script>
         $(document).ready(app.Card.fetchAll(app.cardView.initIndexPage));
-    </script>
+    </script> -->
 </body>
 </html>

@@ -1,5 +1,7 @@
 'use strict';
 var app = app || {};
+// const API_URL = 'https://acl-cards-demo.herokuapp.com';
+const API_URL = 'http://localhost:3000';
 
 (function(module) {
     function Card (obj) {
@@ -11,11 +13,23 @@ var app = app || {};
 
     Card.all = [];
 
+    Card.fetchOne = (ctx, cb) => {
+        $.get(`${API_URL}/api/v1/cards/3`)
+            .then(data => {
+                // data is an array, so we need the first object in it
+                // and we need to morph into a Card instance so we can call its .toHtml method
+                
+                ctx.card = new Card(data[0]);
+                cb();
+            })
+            .fail(console.error)
+    };
+
     Card.fetchAll = (cb) => {
-        $.get('https://acl-cards-demo.herokuapp.com/api/v1/cards/')
+        $.get(`${API_URL}/api/v1/cards/`)
             .then(Card.loadAll)
             .then(cb)
-            .fail(console.error)
+            .fail(console.error);
     }
 
     Card.loadAll = (data) => {
