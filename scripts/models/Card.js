@@ -14,7 +14,7 @@ const API_URL = 'http://localhost:3000';
     Card.all = [];
 
     Card.fetchOne = (ctx, cb) => {
-        $.get(`${API_URL}/api/v1/cards/3`)
+        $.get(`${API_URL}/api/v1/cards/${ctx.params.id}`)
             .then(data => {
                 // data is an array, so we need the first object in it
                 // and we need to morph into a Card instance so we can call its .toHtml method
