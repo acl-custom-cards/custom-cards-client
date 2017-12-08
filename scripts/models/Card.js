@@ -29,5 +29,3 @@ var app = app || {};
 
     module.Card = Card;
 })(app);
-
-$(document).ready(app.Card.fetchAll(app.cardView.initIndexPage));

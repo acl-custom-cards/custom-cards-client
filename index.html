@@ -35,6 +35,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
     <script src="scripts/views/cardview.js"></script>
     <script src="scripts/models/Card.js"></script>
-    <!-- <script src="scripts/views/aboutview.js"></script> -->
+    <script src="scripts/views/aboutview.js"></script>
+    <script>
+        $(document).ready(app.Card.fetchAll(app.cardView.initIndexPage));
+    </script>
 </body>
 </html>
