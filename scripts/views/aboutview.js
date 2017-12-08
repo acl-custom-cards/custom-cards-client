@@ -6,7 +6,7 @@ var app = app || {};
 
     aboutView.initAboutPage = () => {
         $('main section').hide();
-        $('#about').show();
+        $('section[data-tab="about"]').show();
     }
 
     module.aboutView = aboutView;
