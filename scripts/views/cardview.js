@@ -13,7 +13,6 @@ var app = app || {};
     cardView.initDetailPage = (ctx) => {
         $('main section').hide();
         $('#cards').empty().show();
-        console.log(ctx.card);
         $('#cards').append(ctx.card.toHtml());
     }
 
