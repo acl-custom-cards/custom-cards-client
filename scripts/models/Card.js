@@ -18,6 +18,30 @@ const API_URL = 'http://localhost:3000';
             .then(console.log)
             .catch(console.error);
     }
+        
+    Card.update = (id,data) => {
+        $.ajax({
+            url: `${API_URL}/api/v1/cards/${id}`,
+            method: 'PUT',
+            data: data
+        })
+            .then(() => {
+                console.log('updated!');
+                page(`/cards/${id}`);
+            })
+            .catch(console.error);
+    }
+
+    Card.delete = id => {
+        $.ajax({
+            url: `${API_URL}/api/v1/cards/${id}`,
+            method: 'DELETE'
+        })
+            .then(() => {
+                page('/cards');
+            })
+            .catch(console.error);
+    }
 
     Card.fetchOne = (ctx, cb) => {
         $.get(`${API_URL}/api/v1/cards/${ctx.params.id}`)

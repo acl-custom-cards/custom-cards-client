@@ -9,6 +9,10 @@
         <article>
             <a href="/cards/{{id}}"><h1>{{content}}</h1></a>
             <p>~ From {{sender}} to {{recipient}}</p>
+            <section>
+                <button data-action="update" data-id="{{id}}">UPDATE</button>
+                <button data-action="delete" data-id="{{id}}">DELETE</button>
+            </section>
         </article>
     </script>
     <style>
@@ -35,11 +39,22 @@
         <section>
             <form id="new-card">
                 <label for="recipient">To:</label>
-                <input type="text" name="recipient" value="sj">
+                <input type="text" name="recipient" value="santa">
                 <label for="sender">From:</label>
-                <input type="text" name="sender" value="mom">
+                <input type="text" name="sender" value="louis">
                 <label for="content">Greeting:</label>
-                <input type="text" name="content" value="helloooo!">
+                <input type="text" name="content" value="woof!">
+                <button type="submit">SEND</button>
+            </form>
+        </section>
+        <section>
+            <form id="update-card">
+                <label for="recipient">To:</label>
+                <input type="text" name="recipient">
+                <label for="sender">From:</label>
+                <input type="text" name="sender">
+                <label for="content">Greeting:</label>
+                <input type="text" name="content">
                 <button type="submit">SEND</button>
             </form>
         </section>
