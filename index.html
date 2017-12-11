@@ -11,11 +11,19 @@
             <p>~ From {{sender}} to {{recipient}}</p>
         </article>
     </script>
+    <style>
+        #cards > article {
+            border: solid black 1px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="/">cards</a></li>
+            <li><a href="/">home</a></li>
+            <li><a href="/cards">cards</a></li>
             <li><a href="/about" id="about">about</a></li>
             <li><a href="/new" id="new">new</a></li>
         </ul>
@@ -23,6 +31,17 @@
     <main>
         <section id="cards">
             <!-- will show all cards -->
+        </section>
+        <section>
+            <form id="new-card">
+                <label for="recipient">To:</label>
+                <input type="text" name="recipient" value="sj">
+                <label for="sender">From:</label>
+                <input type="text" name="sender" value="mom">
+                <label for="content">Greeting:</label>
+                <input type="text" name="content" value="helloooo!">
+                <button type="submit">SEND</button>
+            </form>
         </section>
         <section data-tab="about">
             <ul>
@@ -39,8 +58,5 @@
     <script src="scripts/models/Card.js"></script>
     <script src="scripts/views/aboutview.js"></script>
     <script src="scripts/routes.js"></script>
-    <!-- <script>
-        $(document).ready(app.Card.fetchAll(app.cardView.initIndexPage));
-    </script> -->
 </body>
 </html>

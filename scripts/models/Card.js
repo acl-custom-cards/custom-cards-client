@@ -13,21 +13,27 @@ const API_URL = 'http://localhost:3000';
 
     Card.all = [];
 
+    Card.create = card => {
+        $.post(`${API_URL}/api/v1/cards`, card)
+            .then(console.log)
+            .catch(console.error);
+    }
+
     Card.fetchOne = (ctx, cb) => {
         $.get(`${API_URL}/api/v1/cards/${ctx.params.id}`)
             .then(data => {
-                // data is an array, so we need the first object in it
-                // and we need to morph into a Card instance so we can call its .toHtml method
-                
                 ctx.card = new Card(data[0]);
                 cb();
             })
-            .fail(console.error)
+            .fail(console.error);
     };
 
-    Card.fetchAll = (cb) => {
+    Card.fetchAll = (ctx, cb) => {
         $.get(`${API_URL}/api/v1/cards/`)
-            .then(Card.loadAll)
+            .then(data => {
+                Card.loadAll(data);
+                ctx.cards = Card.all;
+            })
             .then(cb)
             .fail(console.error);
     }
