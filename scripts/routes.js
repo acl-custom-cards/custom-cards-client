@@ -13,6 +13,5 @@ page('*', (ctx, next) => {
     console.log('Nothing to see here!'); 
 });
  
-$(document).ready(() => {
-    page.start();
-});
+page.base('/custom-cards-client'); 
+page.start();
