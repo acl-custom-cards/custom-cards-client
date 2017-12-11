@@ -1,7 +1,7 @@
 'use strict';
 var app = app || {};
-// const API_URL = 'https://acl-cards-demo.herokuapp.com';
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://acl-cards-demo.herokuapp.com';
+// const API_URL = 'http://localhost:3000';
 
 (function(module) {
     function Card (obj) {
@@ -13,21 +13,51 @@ const API_URL = 'http://localhost:3000';
 
     Card.all = [];
 
+    Card.create = card => {
+        $.post(`${API_URL}/api/v1/cards`, card)
+            .then(console.log)
+            .catch(console.error);
+    }
+        
+    Card.update = (id,data) => {
+        $.ajax({
+            url: `${API_URL}/api/v1/cards/${id}`,
+            method: 'PUT',
+            data: data
+        })
+            .then(() => {
+                console.log('updated!');
+                page(`/cards/${id}`);
+            })
+            .catch(console.error);
+    }
+
+    Card.delete = id => {
+        $.ajax({
+            url: `${API_URL}/api/v1/cards/${id}`,
+            method: 'DELETE'
+        })
+            .then(() => {
+                page('/cards');
+            })
+            .catch(console.error);
+    }
+
     Card.fetchOne = (ctx, cb) => {
         $.get(`${API_URL}/api/v1/cards/${ctx.params.id}`)
             .then(data => {
-                // data is an array, so we need the first object in it
-                // and we need to morph into a Card instance so we can call its .toHtml method
-                
                 ctx.card = new Card(data[0]);
                 cb();
             })
-            .fail(console.error)
+            .fail(console.error);
     };
 
-    Card.fetchAll = (cb) => {
+    Card.fetchAll = (ctx, cb) => {
         $.get(`${API_URL}/api/v1/cards/`)
-            .then(Card.loadAll)
+            .then(data => {
+                Card.loadAll(data);
+                ctx.cards = Card.all;
+            })
             .then(cb)
             .fail(console.error);
     }

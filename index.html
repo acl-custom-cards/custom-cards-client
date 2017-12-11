@@ -7,22 +7,56 @@
     <title>Custom Cards</title>
     <script id="card-template" type="text/x-handlebars-template">
         <article>
-            <a href="/cards/{{id}}"><h1>{{content}}</h1></a>
+            <a href="./cards/{{id}}"><h1>{{content}}</h1></a>
             <p>~ From {{sender}} to {{recipient}}</p>
+            <section>
+                <button data-action="update" data-id="{{id}}">UPDATE</button>
+                <button data-action="delete" data-id="{{id}}">DELETE</button>
+            </section>
         </article>
     </script>
+    <style>
+        #cards > article {
+            border: solid black 1px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="/">cards</a></li>
-            <li><a href="/about" id="about">about</a></li>
-            <li><a href="/new" id="new">new</a></li>
+            <li><a href="./">home</a></li>
+            <li><a href="./cards">cards</a></li>
+            <li><a href="./about" id="about">about</a></li>
+            <li><a href="./new" id="new">new</a></li>
         </ul>
     </nav>
     <main>
         <section id="cards">
             <!-- will show all cards -->
+        </section>
+        <section>
+            <form id="new-card">
+                <label for="recipient">To:</label>
+                <input type="text" name="recipient" value="santa">
+                <label for="sender">From:</label>
+                <input type="text" name="sender" value="louis">
+                <label for="content">Greeting:</label>
+                <input type="text" name="content" value="woof!">
+                <button type="submit">SEND</button>
+            </form>
+        </section>
+        <section>
+            <form id="update-card">
+                <label for="recipient">To:</label>
+                <input type="text" name="recipient">
+                <label for="sender">From:</label>
+                <input type="text" name="sender">
+                <label for="content">Greeting:</label>
+                <input type="text" name="content">
+                <button type="submit">SEND</button>
+            </form>
         </section>
         <section data-tab="about">
             <ul>
@@ -39,8 +73,5 @@
     <script src="scripts/models/Card.js"></script>
     <script src="scripts/views/aboutview.js"></script>
     <script src="scripts/routes.js"></script>
-    <!-- <script>
-        $(document).ready(app.Card.fetchAll(app.cardView.initIndexPage));
-    </script> -->
 </body>
 </html>
