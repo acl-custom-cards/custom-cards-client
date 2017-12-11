@@ -12,6 +12,6 @@ page('*', (ctx, next) => {
     console.log('Nothing to see here!'); 
 });
  
-// add base path for production
-page.base('/custom-cards-client'); 
+// add base path for production: YOUR REPO NAME!
+page.base('/custom-cards-client');
 page.start();
