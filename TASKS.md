@@ -1,26 +1,18 @@
 ## Tasks
 
-- x Create index.html page
-    - to show all cards information
-    - get data on load
-    - add handlebars template for cards
+- GOAL: Add ability to update existing card
 
-- Create script files
-    - x Card.js
-    - cardview.js
-
-- x Create Card object to handle working w data from database
-    - give .toHTML() method that returns a filled handlebars template
-    - give .fetchAll method that queries api for card data
-    - give .loadAll method that loads data from query into Card.all
-
-- Create cardView object that
-    - has function initIndexPage
-        - show card-container
-        - show all cards
-
-- Create aboutView object that
-    - has function initAboutPage
-        - show about-container
-
-- Create css files
+    - add an  "update" button in detailed card view
+        - with event listener to: 
+            - capture card's current info 
+            - route us to the update form: /cards/:id/update
+    - add a route listening for /cards/:id/update
+        - hide all sections, show only the update form
+    - form with inputs:
+        - recipient, sender, content
+        - set value of inputs to selected card's data
+        - add event listener to the form - on submit will send data to server
+    - add function to send PUT request to server (in Card.js)
+    - add a route handler in the server listening for a PUT request to '/api/v1/cards/:id'
+        - add function to query database and update (in the server)
+    - get and display updated card data

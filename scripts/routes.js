@@ -1,8 +1,9 @@
-// page('/', app.Card.fetchAll, app.cardView.initIndexPage);
-page('/', app.cardView.initNewPage);
+page('/', app.Card.fetchAll, app.cardView.initIndexPage);
+// page('/', app.cardView.initNewPage);
 
 page('/cards', app.Card.fetchAll, app.cardView.initIndexPage);
 page('/cards/:id', app.Card.fetchOne, app.cardView.initDetailPage);
+page('/cards/:id/update', app.Card.fetchOne, app.cardView.initUpdatePage);
 
 page('/new', app.cardView.initNewPage);
 

@@ -9,6 +9,7 @@
         <article>
             <a href="/custom-cards-client/cards/{{id}}"><h1>{{content}}</h1></a>
             <p>~ From {{sender}} to {{recipient}}</p>
+            <button data-method="update">UPDATE</button>
         </article>
     </script>
     <style>
@@ -40,6 +41,17 @@
                 <input type="text" name="sender" value="mom">
                 <label for="content">Greeting:</label>
                 <input type="text" name="content" value="helloooo!">
+                <button type="submit">SEND</button>
+            </form>
+        </section>
+        <section>
+            <form id="update-card">
+                <label for="recipient">To:</label>
+                <input type="text" name="recipient">
+                <label for="sender">From:</label>
+                <input type="text" name="sender">
+                <label for="content">Greeting:</label>
+                <input type="text" name="content">
                 <button type="submit">SEND</button>
             </form>
         </section>

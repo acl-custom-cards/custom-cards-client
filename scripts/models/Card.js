@@ -1,7 +1,7 @@
 'use strict';
 var app = app || {};
-const API_URL = 'https://acl-cards-demo.herokuapp.com';
-// const API_URL = 'http://localhost:3000';
+// const API_URL = 'https://acl-cards-demo.herokuapp.com';
+const API_URL = 'http://localhost:3000';
 
 (function(module) {
     function Card (obj) {
@@ -17,6 +17,21 @@ const API_URL = 'https://acl-cards-demo.herokuapp.com';
         $.post(`${API_URL}/api/v1/cards`, card)
             .then(console.log)
             .catch(console.error);
+    }
+
+    Card.update = (id, data) => {
+        console.log( id );
+        console.log( 'data', data );
+        $.ajax({
+            url: `${API_URL}/api/v1/cards/${id}`,
+            method: 'PUT',
+            data: data
+        })
+            .then(data => {
+                console.log(data);
+                page(`/cards/${id}`);
+            })
+            .fail(console.error);
     }
 
     Card.fetchOne = (ctx, cb) => {
