@@ -1,7 +1,7 @@
 'use strict';
 var app = app || {};
-// const API_URL = 'https://acl-cards-demo.herokuapp.com';
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://acl-cards-demo.herokuapp.com';
+// const API_URL = 'http://localhost:3000';
 
 (function(module) {
     function Card (obj) {
