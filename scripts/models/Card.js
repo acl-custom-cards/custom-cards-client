@@ -38,6 +38,8 @@ const API_URL = 'https://acl-cards-demo.herokuapp.com';
             .fail(console.error);
     }
 
+    // NEXT STEP: Add Card.fetchRandom function
+
     Card.loadAll = (data) => {
         Card.all = data.map(obj => new Card(obj));
     }
