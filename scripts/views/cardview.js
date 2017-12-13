@@ -20,7 +20,7 @@ var app = app || {};
         $('main section').hide();
         $('#new-card').parent().show();
 
-        $('#new-card').one('submit', function () {
+        $('#new-card').on('submit', function () {
             event.preventDefault();
             const newCard = {
                 recipient: this.recipient.value,
@@ -29,6 +29,10 @@ var app = app || {};
             };
             
             app.Card.create(newCard);
+        });
+        $('#new-card').on('submi', function (){
+            event.preventDefault();
+            console.log('whatever');
         });
     }
 
