@@ -57,6 +57,13 @@ const API_URL = 'http://localhost:3000';
         Card.all = data.map(obj => new Card(obj));
     }
 
+    Card.getQuote = cb => {
+        $.get(`${API_URL}/randomQuote`)
+            .then(data => {
+               cb(data); 
+            });
+    }
+
     Card.prototype.toHtml = function () {
         let fillTemplate = Handlebars.compile($('#card-template').text());
         return fillTemplate(this);

@@ -27,6 +27,12 @@ var app = app || {};
         $('main section').hide();
         $('#new-card').parent().show();
 
+        $('#random').on('click', function () {
+            app.Card.getQuote(data => {
+                $(this).parent().find('input[name="content"]').val(data);
+            });
+        });
+
         $('#new-card').one('submit', function () {
             event.preventDefault();
             const newCard = {
