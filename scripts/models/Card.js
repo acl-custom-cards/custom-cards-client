@@ -13,6 +13,12 @@ const API_URL = 'http://localhost:3000';
 
     Card.all = [];
 
+    Card.getQuote = (data) => {
+        $.get(`${API_URL}/quote`)
+            .then(console.log(data));
+
+    }
+
     Card.create = card => {
         $.post(`${API_URL}/api/v1/cards`, card)
             .then(console.log)
